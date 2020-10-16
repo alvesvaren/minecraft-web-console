@@ -1,39 +1,82 @@
-.App {
-    text-align: center;
+.app-root {
+    background-color: #2f343f;
+    height: 100%;
+    color: #d3dae3;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+* {
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+#status-area {
+    height: 100px;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+#content-area {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    height: calc(100% - (100px + 54px));
+    @media screen and (max-width: 760px) {
+        flex-direction: column-reverse;
+        #sidebar-area {
+            width: 100%;
+        }
+    }
 }
 
-.App-link {
-    color: #61dafb;
+#console-area {
+    flex-grow: 1;
+    padding: 0 10px;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+#sidebar-area {
+    grid-area: si;
+    width: 250px;
+    min-height: 100px;
+}
+
+#console-field {
+    width: 100%;
+    resize: none;
+    height: 100%;
+}
+
+#command-area {
+    height: 34px;
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+button, input[type=button], input[type=submit] {
+    border-radius: 3px;
+    padding: 0 16px;
+    background-color: #414654;
+    color: unset;
+    border: 1px solid #6c717b;
+    transition-duration: 100ms;
+    transition-property: border-color, background-color;
+
+    &:hover, &:active, &:focus {
+        border-color: #5294e2;
     }
 
-    to {
-        transform: rotate(360deg);
+    &:active, &:focus {
+        background-color: #5395e3;
     }
+
+    &:active {
+        transform: translate(1px, 1px);
+    }
+}
+
+textarea, input[type=text], input[type=password], input[type=email] {
+    background-color: #404552;
+    border: 1px solid #585e68;
+    color: unset;
+    padding: 0 8px;
+    border-radius: 3px;
+}
+
+#command-field {
+    flex-grow: 1;
 }
